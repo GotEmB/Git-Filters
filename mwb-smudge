@@ -1,0 +1,21 @@
+#!/bin/bash
+# mwb-smudge
+
+sd="staging/"
+ip="orig.zip"
+
+mkdir $sd > /dev/null
+cd $sd > /dev/null
+cat /dev/stdin > $ip
+
+unzip $ip -d $ip.uncompressed > /dev/null
+rm $ip > /dev/null
+
+cd $ip.uncompressed > /dev/null
+zip $ip * > /dev/null
+
+cat $ip
+
+cd .. > /dev/null
+cd .. > /dev/null
+rm -R -f $sd > /dev/null
