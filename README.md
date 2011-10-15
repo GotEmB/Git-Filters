@@ -10,6 +10,7 @@ Currently Available
 Installation
 ------------
 1. Clone this repo.
-2. cd into your cloned directory ‘Git-Filters’.
-3. source the install_git-filters script.
-> . ./install_git-filters
+2. cd into your cloned directory `Git-Filters`.
+3. source the `install_git-filters` script.
+
+	. ./install_git-filters
