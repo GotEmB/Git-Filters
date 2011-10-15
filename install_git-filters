@@ -1,0 +1,13 @@
+#!/bin/bash
+# install_git-filters
+
+BASEDIR="$( cd "$( dirname "$0" 2>/dev/null)" && pwd 2>/dev/null)"
+
+if ! grep -q "^export PATH=\$PATH:$BASEDIR/filters$" ~/.bash_profile > /dev/null 2>&1; then
+	echo "export PATH=\$PATH:$BASEDIR/filters" >> ~/.bash_profile
+fi
+
+/usr/bin/git config --global filter.mwb.clean mwb-clean
+/usr/bin/git config --global filter.mwb.smudge mwb-smudge
+
+export PATH=$PATH:$BASEDIR/filters
