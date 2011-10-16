@@ -3,6 +3,7 @@
 
 sd="staging/"
 ip="orig.zip"
+mp="midw.zip"
 
 mkdir $sd > /dev/null
 cd $sd > /dev/null
@@ -14,7 +15,8 @@ rm $ip > /dev/null
 cd $ip.uncompressed > /dev/null
 zip $ip -0 * > /dev/null
 
-sed -E 's/_ptr_="0x[0-9a-f]{7}"/_ptr_="0xXXXXXXX"/' < $ip
+sed -E 's/_ptr_="0x[0-9a-f]{7}"/_ptr_="0xXXXXXXXX"/' < $ip > $mp
+sed -E 's/_ptr_="0x[0-9a-f]{8}"/_ptr_="0xXXXXXXXX"/' < $mp
 
 cd .. > /dev/null
 cd .. > /dev/null
