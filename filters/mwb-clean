@@ -12,11 +12,14 @@ cat /dev/stdin > $ip
 unzip $ip -d $ip.uncompressed > /dev/null
 rm $ip > /dev/null
 
+sed -E 's/_ptr_="0x[0-9a-f]{7}"/_ptr_="0xXXXXXXXX"/' < $ip.uncompressed/document.mwb.xml > $ip.uncompressed/document.mwb.sg1.xml
+rm $ip.uncompressed/document.mwb.xml > /dev/null
+sed -E 's/_ptr_="0x[0-9a-f]{8}"/_ptr_="0xXXXXXXXX"/' < $ip.uncompressed/document.mwb.sg1.xml > $ip.uncompressed/document.mwb.xml
+
 cd $ip.uncompressed > /dev/null
 zip $ip -0 * > /dev/null
 
-sed -E 's/_ptr_="0x[0-9a-f]{7}"/_ptr_="0xXXXXXXXX"/' < $ip > $mp
-sed -E 's/_ptr_="0x[0-9a-f]{8}"/_ptr_="0xXXXXXXXX"/' < $mp
+cat < $ip.uncompressed/document.mwb.xml
 
 cd .. > /dev/null
 cd .. > /dev/null
