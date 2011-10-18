@@ -3,7 +3,6 @@
 
 sd="staging/"
 ip="orig.zip"
-mp="midw.zip"
 
 mkdir $sd > /dev/null
 cd $sd > /dev/null
@@ -15,11 +14,12 @@ rm $ip > /dev/null
 sed -E 's/_ptr_="0x[0-9a-f]{7}"/_ptr_="0xXXXXXXXX"/' < $ip.uncompressed/document.mwb.xml > $ip.uncompressed/document.mwb.sg1.xml
 rm $ip.uncompressed/document.mwb.xml > /dev/null
 sed -E 's/_ptr_="0x[0-9a-f]{8}"/_ptr_="0xXXXXXXXX"/' < $ip.uncompressed/document.mwb.sg1.xml > $ip.uncompressed/document.mwb.xml
+rm $ip.uncompressed/document.mwb.sg1.xml > /dev/null
 
 cd $ip.uncompressed > /dev/null
 zip $ip -0 * > /dev/null
 
-cat < $ip.uncompressed/document.mwb.xml
+cat < $ip
 
 cd .. > /dev/null
 cd .. > /dev/null
