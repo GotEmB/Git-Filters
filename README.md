@@ -11,4 +11,4 @@ Installation
 ------------
 1. Clone this repo.
 2. cd into your cloned directory `Git-Filters`.
-3. source the `install_git-filters` script (i.e. `. ./install_git-filters`).
+3. source the `install_git-filters` script (i.e. `source ./install_git-filters`).
