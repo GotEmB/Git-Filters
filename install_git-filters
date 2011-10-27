@@ -3,8 +3,8 @@
 
 BASEDIR="$( cd "$( dirname "$0" 2>/dev/null)" && pwd 2>/dev/null)"
 
-if ! grep -q "^export PATH=\$PATH:$BASEDIR/filters$" ~/.bash_profile > /dev/null 2>&1; then
-	echo "export PATH=\$PATH:$BASEDIR/filters" >> ~/.bash_profile
+if ! sudo grep -q "^export PATH=\$PATH:$BASEDIR/filters$" /etc/profile > /dev/null 2>&1; then
+	sudo sh -c "echo \"export PATH=\\\$PATH:$BASEDIR/filters\" >> /etc/profile"
 fi
 
 /usr/bin/git config --global filter.mwb.clean mwb-clean
