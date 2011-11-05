@@ -1,0 +1,3 @@
+echo export PATH=/usr/local/bin:/usr/bin:/cygdrive/c/Program:/home/Gautham/documents/git-filters/filters
+export PATH=/usr/local/bin:/usr/bin:/cygdrive/c/Program:/home/Gautham/documents/git-filters/filters
+export PATH=/usr/local/bin:/usr/bin:/cygdrive/c/Program:/home/Gautham/documents/git-filters/filters:/home/Gautham/documents/git-filters/filters:/home/Gautham/documents/git-filters/filters

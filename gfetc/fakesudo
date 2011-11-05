@@ -1,0 +1,8 @@
+#!/usr/bin/bash
+# FakeSudo
+
+if [ "$1" == "sh" ]; then
+	`$3`
+else
+	"$@"
+fi

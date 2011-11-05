@@ -1,13 +1,38 @@
 #!/bin/bash
 # install_git-filters
 
-BASEDIR="$( cd "$( dirname "$0" 2>/dev/null)" && pwd 2>/dev/null)"
-
-if ! sudo grep -q "^export PATH=\$PATH:$BASEDIR/filters$" /etc/profile > /dev/null 2>&1; then
-	sudo sh -c "echo \"export PATH=\\\$PATH:$BASEDIR/filters\" >> /etc/profile"
+echo -e "Getting Operating System type: \c"
+if [ "$(uname -o)" == "Cygwin" ]; then
+	echo "Cygwin"
+	echo -e "Installing FakeSudo: \c"
+	alias sudo=$BASEDIR/gfetc/fakesudo
+	echo "Done"
+else
+	echo "$(uname -o)"
 fi
 
+echo -e "Getting current directory: \c"
+BASEDIR="$( cd "$( dirname "$0" 2>/dev/null)" && pwd 2>/dev/null)"
+echo "$BASEDIR"
+
+echo -e "Checking if PATH(/etc/profile) contains Git-Filters: \c"
+if ! grep -q "^export PATH=\$PATH:$BASEDIR/filters$" /etc/profile > /dev/null 2>&1 ; then
+	echo "No"
+	echo -e "Adding Git-Filters to PATH(/etc/profile): \c"
+	echo "export PATH=\$PATH:$BASEDIR/filters" >> /etc/profile | sudo tee -a /etc/profile > /dev/null
+	echo "Done"
+else
+	echo "Yes"
+fi
+
+echo -e "Registering filters: \c"
 /usr/bin/git config --global filter.mwb.clean mwb-clean
 /usr/bin/git config --global filter.mwb.smudge mwb-smudge
+echo "Done"
 
+echo -e "Adding Git-Filters to PATH(env): \c"
 export PATH=$PATH:$BASEDIR/filters
+echo "Done"
+echo 
+echo "Installation Complete."
+echo "Do not delete this directory."
